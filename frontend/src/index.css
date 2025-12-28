@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode theme (default) */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 270 80% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 15% 96%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 270 10% 96.1%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 270 50% 90%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 13% 90%;
+    --input: 270 13% 90%;
+    --ring: 270 80% 65%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode theme (purple-black) */
+    --background: 240 20% 8%;
+    --foreground: 270 50% 95%;
+    --card: 240 25% 12%;
+    --card-foreground: 270 50% 95%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 270 50% 95%;
+    --primary: 270 80% 65%;
+    --primary-foreground: 240 20% 8%;
+    --secondary: 270 30% 20%;
+    --secondary-foreground: 270 50% 95%;
+    --muted: 270 25% 18%;
+    --muted-foreground: 270 30% 70%;
+    --accent: 270 50% 25%;
+    --accent-foreground: 270 50% 95%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 270 30% 25%;
+    --input: 270 30% 20%;
+    --ring: 270 80% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+}
+
+@layer components {
+  /* ReactFlow canvas styling */
+  .react-flow {
+    @apply bg-gray-50 dark:bg-[#0a0a0f];
+  }
+
+  .react-flow__background {
+    @apply bg-gray-50 dark:bg-[#0a0a0f];
+  }
+
+  .react-flow__controls {
+    @apply shadow-md rounded-md;
+  }
+
+  .react-flow__controls-button {
+    @apply bg-background border border-border text-foreground;
+  }
+
+  .react-flow__controls-button:hover {
+    @apply bg-muted;
+  }
+
+  .react-flow__minimap {
+    @apply bg-background border border-border rounded-md shadow-md;
+  }
+
+  /* Selected node styling */
+  .react-flow__node.selected .base-node {
+    @apply ring-2 ring-primary ring-offset-2;
+  }
+
+  /* Allow dropdowns to overflow node boundaries */
+  .react-flow__node {
+    overflow: visible !important;
+  }
+
+  .react-flow__node > div {
+    overflow: visible !important;
+  }
+
+  /* Edge/connection line styling */
+  .react-flow__edge-path {
+    stroke: hsl(var(--primary)) !important;
+    stroke-width: 2.5px !important;
+    stroke-opacity: 0.85 !important;
+  }
+
+  /* Arrow marker styling */
+  .react-flow__arrowhead {
+    fill: hsl(var(--primary)) !important;
+    stroke: hsl(var(--primary)) !important;
+  }
+}
