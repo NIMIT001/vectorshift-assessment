@@ -112,8 +112,11 @@
 
   /* Ensure delete button is always visible */
   .base-node button[aria-label="Delete node"] {
-    z-index: 1000 !important;
+    z-index: 9999 !important;
     position: absolute !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* Edge/connection line styling */
