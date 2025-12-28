@@ -30,6 +30,10 @@ export const SubmitButton = () => {
     setError(null);
     
     try {
+      // Create an AbortController for timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+      
       const response = await fetch(`${API_URL}/pipelines/parse`, {
         method: 'POST',
         headers: {
@@ -50,7 +54,10 @@ export const SubmitButton = () => {
             targetHandle: edge.targetHandle,
           })),
         }),
+        signal: controller.signal, // Add abort signal for timeout
       });
+
+      clearTimeout(timeoutId); // Clear timeout if request succeeds
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -61,7 +68,15 @@ export const SubmitButton = () => {
       setOpen(true);
     } catch (err) {
       console.error('Error submitting pipeline:', err);
-      setError(err.message);
+      
+      // Handle different error types
+      if (err.name === 'AbortError') {
+        setError('Request timed out after 15 seconds. The backend server may be slow or unreachable. Please try again.');
+      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+        setError(`Cannot connect to backend server at ${API_URL}. Please check if the server is running and accessible.`);
+      } else {
+        setError(err.message || 'An error occurred while submitting the pipeline.');
+      }
       setOpen(true);
     } finally {
       setLoading(false);
