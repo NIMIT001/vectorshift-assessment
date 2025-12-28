@@ -11,7 +11,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # Local development
-        "https://your-frontend-app.vercel.app",  # Production
+        "https://vectorshift-frontend-chi.vercel.app",  # Production frontend
     ],
     allow_credentials=True,
     allow_methods=["*"],
