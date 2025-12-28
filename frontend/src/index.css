@@ -110,6 +110,12 @@
     overflow: visible !important;
   }
 
+  /* Ensure delete button is always visible */
+  .base-node button[aria-label="Delete node"] {
+    z-index: 1000 !important;
+    position: absolute !important;
+  }
+
   /* Edge/connection line styling */
   .react-flow__edge-path {
     stroke: hsl(var(--primary)) !important;

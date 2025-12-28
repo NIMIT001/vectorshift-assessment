@@ -53,7 +53,8 @@ export const BaseNode = ({
       {/* Delete button */}
       <button
         onClick={handleDelete}
-        className="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary hover:bg-destructive/20 border border-border hover:border-destructive flex items-center justify-center transition-colors z-50 cursor-pointer"
+        className="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary hover:bg-destructive/20 border border-border hover:border-destructive flex items-center justify-center transition-colors cursor-pointer"
+        style={{ zIndex: 1000 }}
         aria-label="Delete node"
         type="button"
       >

@@ -36,24 +36,24 @@ export const APINode = ({ id, data }) => {
           style: { top: '67%' }
         }
       ]}
-      width={300}
-      height={200}
+      width={350}
+      height={240}
       className={cn("border-l-4 border-l-[#14b8a6]")}
     >
-      <div className="flex flex-col gap-1 min-w-0">
+      <div className="flex flex-col gap-1 min-w-0 w-full">
         <Label className="text-xs">URL:</Label>
         <Input 
           type="text" 
           value={url} 
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://api.example.com/endpoint"
-          className="h-8 text-xs w-full"
+          className="h-8 text-xs w-full max-w-full"
         />
       </div>
-      <div className="flex flex-col gap-1 min-w-0">
+      <div className="flex flex-col gap-1 min-w-0 w-full">
         <Label className="text-xs">Method:</Label>
         <Select value={method} onValueChange={setMethod}>
-          <SelectTrigger className="h-8 text-xs w-full">
+          <SelectTrigger className="h-8 text-xs w-full max-w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -65,14 +65,14 @@ export const APINode = ({ id, data }) => {
           </SelectContent>
         </Select>
       </div>
-      <div className="flex flex-col gap-1 min-w-0">
+      <div className="flex flex-col gap-1 min-w-0 w-full">
         <Label className="text-xs">Headers (JSON):</Label>
         <Input 
           type="text" 
           value={headers} 
           onChange={(e) => setHeaders(e.target.value)}
           placeholder='{"Content-Type": "application/json"}'
-          className="h-8 text-xs w-full"
+          className="h-8 text-xs w-full max-w-full"
         />
       </div>
     </BaseNode>
